@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "d2aa57664d8e67ea",
+    "type": "split",
+    "children": [
+      {
+        "id": "50fa65cdb99d246c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "64579f8f166d8c43",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "week 0-1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "week 0-1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f40c8859b12e574d",
+    "type": "split",
+    "children": [
+      {
+        "id": "778e6c86af1c1d8d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4848d39a78852397",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "72edfe8a787877ba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d3a9547e7b1fe9c0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e147571f6252d2e8",
+    "type": "split",
+    "children": [
+      {
+        "id": "d0b7c1bd6bb5ef1c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0b84e21b520dfae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "week 0-1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for week 0-1"
+            }
+          },
+          {
+            "id": "9b61ceaf3b0be990",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "week 0-1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from week 0-1"
+            }
+          },
+          {
+            "id": "d25eaa2b0e832c78",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7f8ed336dab5672b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "0bc49ab471db7c9e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "week 0-1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of week 0-1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "64579f8f166d8c43",
+  "lastOpenFiles": [
+    "README.md",
+    "in_class/challenge-1.1/rrsim",
+    "in_class/challenge-1.1/queue.o",
+    "in_class/challenge-1.1/rrsim.o",
+    "in_class/challenge-1.1/queue.h",
+    "in_class/challenge-1.1/rrsim.c",
+    "in_class/challenge-1.1/queue.c",
+    "in_class/challenge-1.1/Makefile",
+    "in_class/challenge-1.1",
+    "in_class",
+    "week 0-1.md"
+  ]
+}
