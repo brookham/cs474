@@ -10,4 +10,6 @@
 		- least-recently run runs next
 		- _round Robin_  
 
-## Project 1: Round Robin
+## Scheduler metrics
+- **Turnaround Time**: the time from when a job was created until it completes running
+- **Response Time**: the time from creation to first run

@@ -185,6 +185,9 @@
   },
   "active": "64579f8f166d8c43",
   "lastOpenFiles": [
+    "in_class/challenge-1.2/README.md",
+    "in_class/challenge-1.2/scheduler.py",
+    "in_class/challenge-1.2",
     "README.md",
     "in_class/challenge-1.1/rrsim",
     "in_class/challenge-1.1/queue.o",
@@ -194,7 +197,6 @@
     "in_class/challenge-1.1/queue.c",
     "in_class/challenge-1.1/Makefile",
     "in_class/challenge-1.1",
-    "in_class",
     "week 0-1.md"
   ]
 }
