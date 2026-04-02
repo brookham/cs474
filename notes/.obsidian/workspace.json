@@ -1,70 +1,41 @@
 {
   "main": {
-    "id": "d2aa57664d8e67ea",
+    "id": "04914940a6bf46f5",
     "type": "split",
     "children": [
       {
-        "id": "50fa65cdb99d246c",
+        "id": "10a78d73500ac15a",
         "type": "tabs",
         "children": [
           {
-            "id": "64579f8f166d8c43",
+            "id": "c7475c8f2e7ee824",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "explorations/Exploration 1.1 - Scheduling.md",
+                "file": "week 1/week 1-2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 1.1 - Scheduling"
-            }
-          },
-          {
-            "id": "184874c4882f1ce4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Exploration 1.2 - Multi-Level Feedback Queue"
-            }
-          },
-          {
-            "id": "9b662c4a066219ca",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Exploration 1.2 - Multi-Level Feedback Queue"
+              "title": "week 1-2"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "f40c8859b12e574d",
+    "id": "c39f4cdf4f8697d1",
     "type": "split",
     "children": [
       {
-        "id": "778e6c86af1c1d8d",
+        "id": "1e5725a562a88147",
         "type": "tabs",
         "children": [
           {
-            "id": "4848d39a78852397",
+            "id": "c2dcce3db37b7277",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -77,7 +48,7 @@
             }
           },
           {
-            "id": "72edfe8a787877ba",
+            "id": "9b18d7121ec93049",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -94,7 +65,7 @@
             }
           },
           {
-            "id": "d3a9547e7b1fe9c0",
+            "id": "70eaa0d1ea09b8b8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -110,20 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "e147571f6252d2e8",
+    "id": "55d0dac014028c3c",
     "type": "split",
     "children": [
       {
-        "id": "d0b7c1bd6bb5ef1c",
+        "id": "0277f0f61c4d2284",
         "type": "tabs",
         "children": [
           {
-            "id": "c0b84e21b520dfae",
+            "id": "cfb66e2cebd431d6",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
+                "file": "week 1/week 1-2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,25 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Exploration 1.2 - Multi-Level Feedback Queue"
+              "title": "Backlinks for week 1-2"
             }
           },
           {
-            "id": "9b61ceaf3b0be990",
+            "id": "588a56cd307f4886",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
+                "file": "week 1/week 1-2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Exploration 1.2 - Multi-Level Feedback Queue"
+              "title": "Outgoing links from week 1-2"
             }
           },
           {
-            "id": "d25eaa2b0e832c78",
+            "id": "c2e8da996017ed8c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -166,7 +137,7 @@
             }
           },
           {
-            "id": "7f8ed336dab5672b",
+            "id": "e85e6490705e5b34",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -180,18 +151,18 @@
             }
           },
           {
-            "id": "0bc49ab471db7c9e",
+            "id": "b47317bacf3ece03",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
+                "file": "week 1/week 1-2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploration 1.2 - Multi-Level Feedback Queue"
+              "title": "Outline of week 1-2"
             }
           }
         ]
@@ -212,22 +183,8 @@
       "bases:Create new base": false
     }
   },
-  "active": "9b662c4a066219ca",
+  "active": "c2dcce3db37b7277",
   "lastOpenFiles": [
-    "explorations/Exploration 1.1 - Scheduling.md",
-    "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
-    "week 0-1.md",
-    "explorations",
-    "in_class/challenge-1.2/README.md",
-    "in_class/challenge-1.2/scheduler.py",
-    "in_class/challenge-1.2",
-    "README.md",
-    "in_class/challenge-1.1/rrsim",
-    "in_class/challenge-1.1/queue.o",
-    "in_class/challenge-1.1/rrsim.o",
-    "in_class/challenge-1.1/queue.h",
-    "in_class/challenge-1.1/rrsim.c",
-    "in_class/challenge-1.1/queue.c",
-    "in_class/challenge-1.1/Makefile"
+    "week 1/week 1-2.md"
   ]
 }
