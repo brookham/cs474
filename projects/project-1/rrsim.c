@@ -11,6 +11,8 @@
 
 #define MIN(x, y) ((x) < (y) ? (x) : (y)) // Compute the minimum
 
+int clock = 0;
+
 struct process
 {
     int pid;
@@ -47,24 +49,24 @@ void parse_command_line(int argc, char **argv)
         char *process = argv[i];
         char *token;
 
-        for (int i = 0; i < argc - 1; i++)
-        {
-            if ((token = strtok(process, ",")) != NULL)
-                do
-                {
-                    table[i].instructions[table[i].program_counter] = atoi(token);
-                    table[i].program_counter++;
-                    
-                } while ((token = strtok(NULL, ",")) != NULL);
-        }
+        if ((token = strtok(process, ",")) != NULL)
+            do
+            {
+                table[i - 1].instructions[table[i - 1].program_counter] = atoi(token);
+                table[i - 1].program_counter++;
+
+            } while ((token = strtok(NULL, ",")) != NULL);
+
+        table[i - 1].program_counter = 0;
     }
 }
 
-int all_complete()
+int all_complete(int argc)
 {
-    for (int i = 0;i < MAX_PROCS; i++)
+    for (int i = 0; i < argc - 1; i++)
     {
-        if (table[i].state != exited){
+        if (table[i].state != exited)
+        {
             return 0;
         }
     }
@@ -72,61 +74,65 @@ int all_complete()
     return 1;
 }
 
-/**
- * Main.
- */
-int main(int argc, char **argv)
+void running_process(struct process *p, int argc, struct queue *q)
 {
-    int clock = 0;
+    printf("PID %d: Running\n", p->pid);
 
-    struct queue *q = queue_new();
-
-    init_proc_table();
-
-    parse_command_line(argc, argv);
-    
-    for (int i = 0; i < argc - 1; i++){
-        queue_enqueue(q, &table[i]);
+    if (p->wake_time_remaining == 0)
+    {
+        p->wake_time_remaining = p->instructions[p->program_counter];
     }
 
-    while(1)
+    int run_time = MIN(QUANTUM, p->wake_time_remaining);
+    p->wake_time_remaining -= run_time;
+
+    for (int i = 0; i < argc - 1; i++)
     {
-        if (all_complete() == 1){
-            break;
+        if (table[i].state == sleeping)
+        {
+            table[i].sleep_time_remaining -= run_time;
         }
+    }
 
-        if (queue_is_empty(q) == 0){
-            clock += 40;
-            int shortest_sleep = __INT_MAX__;
-
-            for (int i = 0; i < argc - 1; i++){
-                if (table[i].state == sleeping){
-                    table[i].sleep_time_remaining -= 40;
-                }
-                
-
-                if (table[i].sleep_time_remaining < shortest_sleep){
-                    shortest_sleep = table[i].sleep_time_remaining;
-                }
-            }
-
-            for (int i = 0; i < argc - 1; i++){
-                table[i].sleep_time_remaining -= shortest_sleep;
-                
-            }
-            clock += shortest_sleep;
-            
+    if (p->wake_time_remaining > 0)
+    {
+        queue_enqueue(q, p);
+    }
+    else
+    {
+        p->program_counter++;
+        if (p->instructions[p->program_counter] == 0)
+        {
+            p->state = exited;
+            printf("PID %d: Exiting\n", p->pid);
         }
-        printf("=== Clock %d ms ===\n", clock);
+        else
+        {
+            p->state = sleeping;
+            p->sleep_time_remaining = p->instructions[p->program_counter];
+            printf("PID %d: Sleeping for %d ms\n", p->pid, p->sleep_time_remaining);
+        }
+    }
+    printf("PID %d: Ran for %d ms\n", p->pid, run_time);
+    clock += run_time;
+}
 
-        for (int i = 0; i < argc - 1; i++){
-            if (table[i].sleep_time_remaining <= 0 && table[i].state == sleeping){
+void sleeping_process(int argc, struct queue *q)
+{
+    for (int i = 0; i < argc - 1; i++)
+    {
+        if (table[i].state == sleeping)
+        {
+            if (table[i].sleep_time_remaining <= 0)
+            {
                 table[i].program_counter++;
-                if (table[i].instructions[table[i].program_counter] == 0){
+                if (table[i].instructions[table[i].program_counter] == 0)
+                {
                     table[i].state = exited;
                     printf("PID %d Exiting\n", table[i].pid);
                 }
-                else {
+                else
+                {
                     table[i].state = ready;
                     table[i].wake_time_remaining = table[i].instructions[table[i].program_counter];
 
@@ -134,46 +140,71 @@ int main(int argc, char **argv)
 
                     queue_enqueue(q, &table[i]);
                 }
-
-                
             }
+        }
+    }
+}
+
+/**
+ * Main.
+ */
+int main(int argc, char **argv)
+{
+
+    struct queue *q = queue_new();
+
+    init_proc_table();
+
+    parse_command_line(argc, argv);
+
+    for (int i = 0; i < argc - 1; i++)
+    {
+        queue_enqueue(q, &table[i]);
+    }
+
+    while (1)
+    {
+        if (all_complete(argc) == 1)
+        {
+            break;
+        }
+
+        if (queue_is_empty(q) == 1)
+        {
+            clock += QUANTUM;
+            int shortest_sleep = __INT_MAX__;
+
+            for (int i = 0; i < argc - 1; i++)
+            {
+                if (table[i].state == sleeping)
+                {
+                    table[i].sleep_time_remaining -= 40;
+                }
+
+                if (table[i].sleep_time_remaining < shortest_sleep)
+                {
+                    shortest_sleep = table[i].sleep_time_remaining;
+                }
+            }
+
+            for (int i = 0; i < argc - 1; i++)
+            {
+                table[i].sleep_time_remaining -= shortest_sleep;
+            }
+            clock += shortest_sleep;
+        }
+
+        printf("=== Clock %d ms ===\n", clock);
+
+        sleeping_process(argc, q);
+        if (queue_is_empty(q))
+        {
+            continue;
         }
 
         struct process *p = queue_dequeue(q);
 
-
-
-
-        printf("PID %d: Running\n", p->pid);
-
-        p->wake_time_remaining = table[p->pid].wake_time_remaining - MIN(QUANTUM, table[p->pid].wake_time_remaining);
-
-        for (int i = 0; i < argc - 1; i++){
-            if (table[i].state == sleeping){
-                table[i].sleep_time_remaining -= p->wake_time_remaining;
-            }
-
-            if (p->wake_time_remaining > 0){
-                queue_enqueue(q, &table[p->pid]);
-            }else {
-                p->program_counter ++;
-                if (p->instructions[p->program_counter] == 0){
-                    p->state = exited;
-                    printf("PID %d: Exiting 2\n", p->pid);
-                } else {
-                    p->state = sleeping;
-                    p->sleep_time_remaining = p->instructions[p->program_counter];
-                    printf("PID %d: Sleeping for %d ms\n", p->sleep_time_remaining);
-                }
-            }
-        }
-
-        if (queue_is_empty(q)){
-            continue;
-        }
-
-
+        running_process(p, argc, q);
     }
-
     queue_free(q);
 }
