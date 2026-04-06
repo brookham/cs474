@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
+                "file": "notes/week-2/week 2-1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 1.2 - Multi-Level Feedback Queue"
+              "title": "week 2-1"
             }
           }
         ],
@@ -214,6 +214,15 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "in_class/challenge-2.1/test_and_set",
+    "in_class/challenge-2.1/Makefile",
+    "in_class/challenge-2.1/test_and_set.c",
+    "in_class/challenge-2.1",
+    "notes/explorations/Exploration 1.1 - Scheduling.md",
+    "notes/week-2/week 2-1.md",
+    "notes/week-2",
+    "notes/explorations/Exploration 2.1 - Locking.md",
+    "notes/Untitled.md",
     "explorations/Exploration 1.1 - Scheduling.md",
     "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
     "week 0-1.md",
@@ -224,10 +233,6 @@
     "README.md",
     "in_class/challenge-1.1/rrsim",
     "in_class/challenge-1.1/queue.o",
-    "in_class/challenge-1.1/rrsim.o",
-    "in_class/challenge-1.1/queue.h",
-    "in_class/challenge-1.1/rrsim.c",
-    "in_class/challenge-1.1/queue.c",
-    "in_class/challenge-1.1/Makefile"
+    "in_class/challenge-1.1/rrsim.o"
   ]
 }
