@@ -214,6 +214,10 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "in_class/challenge-2.2/compare_and_swap",
+    "in_class/challenge-2.2/Makefile",
+    "in_class/challenge-2.2/compare_and_swap.c",
+    "in_class/challenge-2.2",
     "in_class/challenge-2.1/test_and_set",
     "in_class/challenge-2.1/Makefile",
     "in_class/challenge-2.1/test_and_set.c",
@@ -229,10 +233,6 @@
     "explorations",
     "in_class/challenge-1.2/README.md",
     "in_class/challenge-1.2/scheduler.py",
-    "in_class/challenge-1.2",
-    "README.md",
-    "in_class/challenge-1.1/rrsim",
-    "in_class/challenge-1.1/queue.o",
-    "in_class/challenge-1.1/rrsim.o"
+    "README.md"
   ]
 }
