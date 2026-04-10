@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/week-2/week 2-1.md",
+                "file": "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "week 2-1"
+              "title": "Exploration 2.2 - Non-blocking Algorithms"
             }
           }
         ],
@@ -214,6 +214,8 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "notes/week-2/week 2-1.md",
+    "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
     "in_class/challenge-2.2/compare_and_swap",
     "in_class/challenge-2.2/Makefile",
     "in_class/challenge-2.2/compare_and_swap.c",
@@ -223,7 +225,6 @@
     "in_class/challenge-2.1/test_and_set.c",
     "in_class/challenge-2.1",
     "notes/explorations/Exploration 1.1 - Scheduling.md",
-    "notes/week-2/week 2-1.md",
     "notes/week-2",
     "notes/explorations/Exploration 2.1 - Locking.md",
     "notes/Untitled.md",
@@ -232,7 +233,6 @@
     "week 0-1.md",
     "explorations",
     "in_class/challenge-1.2/README.md",
-    "in_class/challenge-1.2/scheduler.py",
     "README.md"
   ]
 }
