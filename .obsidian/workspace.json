@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
+                "file": "notes/explorations/Exploration 3.2 - Memory API.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 2.2 - Non-blocking Algorithms"
+              "title": "Exploration 3.2 - Memory API"
             }
           }
         ],
@@ -214,8 +214,14 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
-    "notes/week-2/week 2-1.md",
+    "projects/project-2/ticketlock",
+    "projects/project-2/ticketlock.c",
+    "projects/project-2/Makefile",
+    "projects/project-2",
+    "notes/explorations/Exploration 3.1 - Address Spaces.md",
+    "notes/explorations/Exploration 3.2 - Memory API.md",
     "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
+    "notes/week-2/week 2-1.md",
     "in_class/challenge-2.2/compare_and_swap",
     "in_class/challenge-2.2/Makefile",
     "in_class/challenge-2.2/compare_and_swap.c",
@@ -223,15 +229,12 @@
     "in_class/challenge-2.1/test_and_set",
     "in_class/challenge-2.1/Makefile",
     "in_class/challenge-2.1/test_and_set.c",
-    "in_class/challenge-2.1",
     "notes/explorations/Exploration 1.1 - Scheduling.md",
-    "notes/week-2",
     "notes/explorations/Exploration 2.1 - Locking.md",
     "notes/Untitled.md",
     "explorations/Exploration 1.1 - Scheduling.md",
     "explorations/Exploration 1.2 - Multi-Level Feedback Queue.md",
     "week 0-1.md",
-    "explorations",
     "in_class/challenge-1.2/README.md",
     "README.md"
   ]
