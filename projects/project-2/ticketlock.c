@@ -9,7 +9,7 @@
 
 
 atomic_int next_ticket;
-atomic_int now_servinig;
+atomic_int now_serving;
 
 
 /**
@@ -27,14 +27,14 @@ void lock(int tid) {
     
     
 
-    while (now_servinig != myturn);
+    while (now_serving != myturn);
 }
 
 /**
  * Unlock the lock.
  */
 void unlock(void) {
-    now_servinig = now_servinig + 1;
+    now_serving = atomic_fetch_and(&now_serving, 1);
 }
 
 /**
