@@ -34,7 +34,7 @@ void lock(int tid) {
  * Unlock the lock.
  */
 void unlock(void) {
-    now_serving = atomic_fetch_and(&now_serving, 1);
+    atomic_fetch_add(&now_serving, 1);
 }
 
 /**

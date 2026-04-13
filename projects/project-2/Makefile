@@ -1,17 +1,15 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -pthread
-TARGET = ticketlock
-SRC = ticketlock.c
+TARGETS = ticketlock rwspinlock
+SRCS = ticketlock.c rwspinlock.c
 
-all: $(TARGET)
 
-$(TARGET): $(SRC)
-		$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
-
-run: $(TARGET)
-		./$(TARGET) 5
+all: $(TARGETS)
+$(TARGETS): %: %.c
+		$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-		rm -f $(TARGET)
+		rm -f $(TARGETS)
+		
+.PHONY: all clean
 
-.PHONY: all run clean

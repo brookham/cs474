@@ -214,6 +214,8 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "projects/project-2/rwspinlock",
+    "projects/project-2/rwspinlock.c",
     "projects/project-2/ticketlock",
     "projects/project-2/ticketlock.c",
     "projects/project-2/Makefile",
@@ -227,8 +229,6 @@
     "in_class/challenge-2.2/compare_and_swap.c",
     "in_class/challenge-2.2",
     "in_class/challenge-2.1/test_and_set",
-    "in_class/challenge-2.1/Makefile",
-    "in_class/challenge-2.1/test_and_set.c",
     "notes/explorations/Exploration 1.1 - Scheduling.md",
     "notes/explorations/Exploration 2.1 - Locking.md",
     "notes/Untitled.md",
