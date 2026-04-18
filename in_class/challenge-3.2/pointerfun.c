@@ -69,15 +69,78 @@ int main(void)
     // If you used pointer notation, redo challenges 1-3 with array
     // notation, and vice versa.
 
+    // Challenge 1:
+    //
+    // Treat heap as an array of chars
+    // Store a string there with strcpy() and print it
+    // strcpy(heap, "yippie");
+
+    // printf("%s\n", (char *)heap);
+
+
+    // // Challenge 2:
+    // //
+    // // Treat heap as an array of ints
+    // // Use a loop to store the values 0, 10, 20, 30, 40 in it
+    // // Use a loop to retrieve the value and print them
+
+
+    // for (int i = 0; i < 5; i++) {
+    //   ((int *)heap)[i] = i *10;
+    // }
+
+    // for (int num = 0; num < 5; num++) {
+    //   printf("%d\n",((int *)heap)[num]);
+    // }
+
+    // // Challenge 3:
+    // //
+    // // Treat heap as an array of struct bicycles
+    // // Store 3 bicycles
+    // // Print out the bicycle data in a loop
+
+    // struct bicycle *bike1 = &((struct bicycle *)heap)[0];
+    // (*bike1).wheel_count = 2;
+    // strcpy((*bike1).name, "just bike");
+
+    // struct bicycle *bike2 = &((struct bicycle *)heap)[1];
+    // (*bike2).wheel_count = 3;
+    // strcpy((*bike2).name, "trike");
+
+    
+    // struct bicycle *bike3 = &((struct bicycle *)heap)[2];
+    // (*bike3).wheel_count = 1;
+    // strcpy((*bike3).name, "unicycle");
+
+    // for (int i = 0; i < 3; i++){
+    //   printf("%s, %d\n", ((struct bicycle*)heap)[i].name, ((struct bicycle*)heap)[i].wheel_count);
+    // }
+
     // Challenge 5:
     //
     // Make the first 32 bytes of the heap a string (array of chars),
     // and follow that directly with an array of ints.
-    //
+
+    char *string = (char*)heap;
+    int *int_arr = (int*)((char *)heap + 32);
+
     // Store a short string in the string area of the heap
     // Use a loop to store the values 0, 10, 20, 30, 40 in the int array
     // Use a loop to retrieve the value and print them
     // Print the string
+    strcpy(string, "hello there");
+
+    for (int i = 0; i < 5; i++) {
+      (int_arr)[i] = i *10;
+    }
+
+    for (int i = 0; i < 5; i++) {
+      printf("%d\n", int_arr[i]);
+    }
+
+    printf("%s\n", string);
+
+
 
     // Challenge 6:
     //
@@ -91,6 +154,30 @@ int main(void)
     // Store as many of these as can fit in SIZE bytes. Loop through,
     // filling them up with programmatically-generated data. Then loop
     // through again and print out the elements.
+
+    int bytes_used = 0;
+
+    for (int i = 0; bytes_used < SIZE; i++) {
+      struct bicycle *bike = &((struct bicycle *)heap)[i];
+      bike->wheel_count = i;
+      strcpy(bike->name, "bike");
+
+      bytes_used += sizeof(*bike);
+
+      int *num = (int *)((char *)heap + i * (sizeof(struct bicycle) + sizeof(int)) + sizeof(struct bicycle));
+      *num = i;
+
+      bytes_used += sizeof(*num);
+    }
+
+      for (int i = 0; i < SIZE / (sizeof(struct bicycle) + sizeof(int)); i++) {
+        struct bicycle *bike = &((struct bicycle *)heap)[i];
+        int *num = (int *)((char *)heap + i * (sizeof(struct bicycle) + sizeof(int)) + sizeof(struct bicycle));
+  
+        printf("%s, %d, %d\n", bike->name, bike->wheel_count, *num);
+      }
+
+
 
     // Free it up
     munmap(heap, SIZE);
