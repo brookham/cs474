@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -pthread
-TARGETS = myalloc rwspinlock
-SRCS = myalloc.c rwspinlock.c
+TARGETS = myalloc 
+SRCS = myalloc.c
 
 
 all: $(TARGETS)

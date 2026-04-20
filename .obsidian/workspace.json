@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/explorations/Exploration 3.3 - Memory Management.md",
+                "file": "notes/explorations/Exploration 4.1 - Segmented Virtual Memory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 3.3 - Memory Management"
+              "title": "Exploration 4.1 - Segmented Virtual Memory"
             }
           }
         ],
@@ -214,6 +214,8 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "notes/explorations/Exploration 3.3 - Memory Management.md",
+    "notes/explorations/Exploration 4.1 - Segmented Virtual Memory.md",
     "notes/week-3/week 3-2.md",
     "in_class/challenge-3.4/coalesce.c",
     "in_class/challenge-3.4/Makefile",
@@ -222,7 +224,6 @@
     "in_class/challenge-3.3/Makefile",
     "in_class/challenge-3.3/split.c",
     "in_class/challenge-3.3",
-    "notes/explorations/Exploration 3.3 - Memory Management.md",
     "notes/week-3/week 3-1.md",
     "in_class/challenge-3.1/datastore",
     "in_class/challenge-3.1/datastore.c",

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/mman.h>
 
 // Please do not change the order or type of the fields in struct block
 
@@ -37,8 +39,50 @@ static struct block *head = NULL;
  */
 void *myalloc(int size)
 {
-    // TODO
-    (void)size;  // silence unused variable warnings
+    if (head == NULL) {
+        head = mmap(NULL, 1024, PROT_READ|PROT_WRITE,
+            MAP_ANON|MAP_PRIVATE, -1, 0);
+        
+            head->in_use = 0;
+            head->size = MEM_SIZE - PADDED_SIZEOF(struct block);
+            head->next = NULL;
+
+    }
+
+    int actual_size = PADDED_SIZE(size);
+    
+        
+    struct block *current = head;
+
+    while (current != NULL){
+        int padded_struct_size = PADDED_SIZEOF(struct block);
+
+        if (current->size >= actual_size && current->in_use == 0){
+            int size_to_split = size + padded_struct_size + PADDED_SIZEOF(struct block);
+            if (current->size >= size_to_split){
+                struct block *empty = PTR_OFFSET(current, (padded_struct_size + actual_size));
+
+                empty->size = current->size - actual_size - padded_struct_size;
+                empty->next = current->next;
+                empty->in_use = 0;
+
+                current->size = actual_size;
+                current->in_use = 1;
+                current->next = empty;
+
+                return PTR_OFFSET((void *)empty, padded_struct_size);
+                
+            }
+            current->in_use = 1;
+            
+
+            return PTR_OFFSET((void *)current, padded_struct_size);
+        }
+
+        current = current->next;
+
+    }
+
     return NULL;
 }
 
@@ -129,6 +173,7 @@ int parse_num_arg(char *progname, char *s)
  */
 int main(int argc, char *argv[])
 {
+
     if (argc == 1) {
         fprintf(stderr, "usage: %s [p|a size|f index] ...\n", argv[0]);
         return 1;

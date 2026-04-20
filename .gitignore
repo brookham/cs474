@@ -4,3 +4,4 @@ rrsim
 in_class/challenge-2.1/test_and_set
 projects/project-2/ticketlock
 projects/project-2/rwspinlock
+projects/project-3/myalloc
