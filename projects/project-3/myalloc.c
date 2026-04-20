@@ -70,7 +70,7 @@ void *myalloc(int size)
                 current->in_use = 1;
                 current->next = empty;
 
-                return PTR_OFFSET((void *)empty, padded_struct_size);
+                return PTR_OFFSET((void *)current, padded_struct_size);
                 
             }
             current->in_use = 1;
@@ -86,6 +86,28 @@ void *myalloc(int size)
     return NULL;
 }
 
+void coalesce_space(struct block *head)
+{
+    struct block *current = head;
+
+    struct block *next_block;
+
+    while (current != NULL){
+        if (current->in_use == 0){
+            next_block = current->next;
+
+            while (next_block != NULL && next_block->in_use == 0){
+                current->size += next_block->size + PADDED_SIZEOF(struct block);
+
+                next_block = next_block->next;
+
+                current->next = next_block;
+            }
+        }
+        current = current->next;
+    }
+}
+
 /**
  * Free a previously-allocated region.
  *
@@ -94,9 +116,14 @@ void *myalloc(int size)
  */
 void myfree(void *p)
 {
-    // TODO
-    (void)p;  // silence unused variable warnings
+    struct block *b = PTR_OFFSET(p, -PADDED_SIZEOF(struct block));
+    b->in_use = 0;
+
+    coalesce_space(head);
+
 }
+
+
 
 // ---------------------------------------------------------
 // No mods past this point, please
