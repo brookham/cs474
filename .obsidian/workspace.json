@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/explorations/Exploration 4.1 - Segmented Virtual Memory.md",
+                "file": "notes/week-4/week 4-1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 4.1 - Segmented Virtual Memory"
+              "title": "week 4-1"
             }
           }
         ],
@@ -214,8 +214,14 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
-    "notes/explorations/Exploration 3.3 - Memory Management.md",
+    "in_class/challenge-4.1/addresses",
+    "in_class/challenge-4.1/Makefile",
+    "in_class/challenge-4.1/addresses.c",
+    "in_class/challenge-4.1",
     "notes/explorations/Exploration 4.1 - Segmented Virtual Memory.md",
+    "notes/week-4/week 4-1.md",
+    "notes/week-4",
+    "notes/explorations/Exploration 3.3 - Memory Management.md",
     "notes/week-3/week 3-2.md",
     "in_class/challenge-3.4/coalesce.c",
     "in_class/challenge-3.4/Makefile",
@@ -223,11 +229,7 @@
     "in_class/challenge-3.3/split",
     "in_class/challenge-3.3/Makefile",
     "in_class/challenge-3.3/split.c",
-    "in_class/challenge-3.3",
     "notes/week-3/week 3-1.md",
-    "in_class/challenge-3.1/datastore",
-    "in_class/challenge-3.1/datastore.c",
-    "in_class/challenge-3.1/Makefile",
     "notes/explorations/Exploration 3.2 - Memory API.md",
     "notes/Untitled.md",
     "notes/explorations/Exploration 3.1 - Address Spaces.md",
