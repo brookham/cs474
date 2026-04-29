@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/explorations/Exploration 5.1 - Translation Lookaside Buffers.md",
+                "file": "notes/week-5/week 5-2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exploration 5.1 - Translation Lookaside Buffers"
+              "title": "week 5-2"
             }
           }
         ],
@@ -214,25 +214,27 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
-    "notes/explorations/Exploration 4.2 - Paging - The Modern Era.md",
+    "in_class/challenge-5.2/mlpt",
+    "in_class/challenge-5.2/Makefile",
+    "in_class/challenge-5.2/mlpt.c",
+    "in_class/challenge-5.2",
     "notes/explorations/Exploration 5.1 - Translation Lookaside Buffers.md",
+    "notes/week-5/week 5-2.md",
+    "notes/week-5",
+    "notes/week-5.md",
+    "notes/explorations/Exploration 4.2 - Paging - The Modern Era.md",
     "in_class/challenge-4.4/po2a",
     "in_class/challenge-4.4/a2po",
     "in_class/challenge-4.4/po2a.c",
     "in_class/challenge-4.4/a2po.c",
     "in_class/challenge-4.4/Makefile",
     "in_class/challenge-4.4",
-    "in_class/challenge-4.3/bitwise",
-    "in_class/challenge-4.3/Makefile",
-    "in_class/challenge-4.3/bitwise.c",
-    "in_class/challenge-4.3",
     "notes/week-4/week 4-2.md",
     "notes/explorations/Exploration 4.1 - Segmented Virtual Memory.md",
     "notes/explorations/Exploration 3.3 - Memory Management.md",
     "notes/week-3/week 3-2.md",
     "notes/week-3/week 3-1.md",
     "notes/explorations/Exploration 3.2 - Memory API.md",
-    "notes/Untitled.md",
     "notes/explorations/Exploration 3.1 - Address Spaces.md",
     "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
     "notes/week-2/week 2-1.md",

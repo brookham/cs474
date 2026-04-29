@@ -1,0 +1,1 @@
+example: 64-bit address space, $2^{64}$ addresses in virtual memory
