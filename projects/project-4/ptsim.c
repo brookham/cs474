@@ -3,10 +3,10 @@
 #include <string.h>
 #include <assert.h>
 
-#define MEM_SIZE 16384  // MUST equal PAGE_SIZE * PAGE_COUNT
+#define MEM_SIZE 16384 // MUST equal PAGE_SIZE * PAGE_COUNT
 #define PAGE_SIZE 256  // MUST equal 2^PAGE_SHIFT
 #define PAGE_COUNT 64
-#define PAGE_SHIFT 8  // Shift page number this much
+#define PAGE_SHIFT 8 // Shift page number this much
 
 #define PTP_OFFSET 64 // How far offset in page 0 is the page table pointer table
 
@@ -29,7 +29,7 @@ void initialize_mem(void)
     memset(mem, 0, MEM_SIZE);
 
     int zpfree_addr = get_address(0, 0);
-    mem[zpfree_addr] = 1;  // Mark zero page as allocated
+    mem[zpfree_addr] = 1; // Mark zero page as allocated
 }
 
 //
@@ -47,26 +47,30 @@ unsigned char get_page_table(int proc_num)
 // This includes the new process page table and page_count data pages.
 //
 
-int allocate_page(){
-    for (int i = 0; i < PAGE_COUNT; i ++){
-        if (mem[i] == 0){
+int allocate_page()
+{
+    for (int i = 0; i < PAGE_COUNT; i++)
+    {
+        if (mem[i] == 0)
+        {
             mem[i] = 1;
             return i;
         }
-        
     }
 
     return -1;
-
 }
 
 void new_process(int proc_num, int page_count)
 {
     int proc_page = allocate_page();
 
-    if (proc_page == -1){
+    if (proc_page == -1)
+    {
         printf("OOM: proc %d: page table\n", proc_num);
-    } else {
+    }
+    else
+    {
         int address = PTP_OFFSET + proc_num;
 
         mem[address] = proc_page;
@@ -74,19 +78,53 @@ void new_process(int proc_num, int page_count)
 
     int data_page;
 
-    for (int i = 0; i < page_count; i ++){
+    for (int i = 0; i < page_count; i++)
+    {
         data_page = allocate_page();
-        if (data_page == -1){
+        if (data_page == -1)
+        {
             printf("OOM: proc %d: data page\n", proc_num);
-        } else {
+        }
+        else
+        {
             mem[get_address(proc_page, i)] = data_page;
         }
-
     }
+}
 
+void kill_process(int proc_num){
+    int page_table = get_page_table(proc_num);
 
+    for (int page = 0; page < PAGE_SIZE; page++){
+        mem[get_page_table(page_table)] = 0;
+        
+    }
+    mem[page_table] = 0;
+}
 
+void store_value(int proc_num, int vaddr, int value){
+    
+    int virtual_page = vaddr >> 8;
+    int offset = vaddr & 255;
+    int physical_page = mem[virtual_page + offset];
 
+    int addr = (physical_page << 8) | offset;
+
+    mem[addr] = value;
+
+    printf("Store proc %d: %d => %d, value=%d\n",proc_num, vaddr, addr, value);
+}
+
+void load_value(int proc_num, int vaddr){
+    int virtual_page = vaddr >> 8;
+    int offset = vaddr & 255;
+    int physical_page = mem[virtual_page + offset];
+
+    int addr = (physical_page << 8) | offset;
+
+    int value = mem[addr];
+
+    printf("Load proc %d: %d => %d, value=%d\n",proc_num, vaddr, addr, value);
 }
 
 //
@@ -98,10 +136,11 @@ void print_page_free_map(void)
 {
     printf("--- PAGE FREE MAP ---\n");
 
-    for (int i = 0; i < 64; i++) {
+    for (int i = 0; i < 64; i++)
+    {
         int addr = get_address(0, i);
 
-        printf("%c", mem[addr] == 0? '.': '#');
+        printf("%c", mem[addr] == 0 ? '.' : '#');
 
         if ((i + 1) % 16 == 0)
             putchar('\n');
@@ -121,12 +160,14 @@ void print_page_table(int proc_num)
     int page_table = get_page_table(proc_num);
 
     // Loop through, printing out used pointers
-    for (int i = 0; i < PAGE_COUNT; i++) {
+    for (int i = 0; i < PAGE_COUNT; i++)
+    {
         int addr = get_address(page_table, i);
 
         int page = mem[addr];
 
-        if (page != 0) {
+        if (page != 0)
+        {
             printf("%02x -> %02x\n", i, page);
         }
     }
@@ -139,27 +180,53 @@ int main(int argc, char *argv[])
 {
     assert(PAGE_COUNT * PAGE_SIZE == MEM_SIZE);
 
-    if (argc == 1) {
+    if (argc == 1)
+    {
         fprintf(stderr, "usage: ptsim commands\n");
         return 1;
     }
-    
+
     initialize_mem();
 
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "pfm") == 0) {
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "pfm") == 0)
+        {
             print_page_free_map();
         }
-        else if (strcmp(argv[i], "ppt") == 0) {
+        else if (strcmp(argv[i], "ppt") == 0)
+        {
             int proc_num = atoi(argv[++i]);
             print_page_table(proc_num);
         }
 
-        else if (strcmp(argv[i], "np") == 0) {
+        else if (strcmp(argv[i], "np") == 0)
+        {
             int proc_num = atoi(argv[++i]);
             int page_count = atoi(argv[++i]);
             new_process(proc_num, page_count);
+        }
 
+        else if (strcmp(argv[i], "kp") == 0)
+        {
+            int proc_num = atoi(argv[++i]);
+            kill_process(proc_num);
+        }
+
+        else if (strcmp(argv[i], "sb") == 0)
+        {
+            int proc_num = atoi(argv[++i]);
+            int vaddr = atoi(argv[++i]);
+            int value = atoi(argv[++i]);
+
+            store_value(proc_num, vaddr, value);
+        }
+
+        else if (strcmp(argv[i], "lb") == 0) {
+            int proc_num = atoi(argv[++i]);
+            int vaddr = atoi(argv[++i]);
+
+            load_value(proc_num, vaddr);
         }
     }
 }
