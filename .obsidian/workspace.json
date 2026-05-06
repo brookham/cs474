@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/week-6/week-6.1.md",
+                "file": "notes/week-6/week-6.2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "week-6.1"
+              "title": "week-6.2"
             }
           }
         ],
@@ -214,19 +214,21 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "in_class/challenge-6.2/seeker.txt",
+    "in_class/challenge-6.2/seek",
+    "in_class/challenge-6.2/seek.c",
+    "in_class/challenge-6.2/Makefile",
+    "in_class/challenge-6.2",
+    "notes/explorations/Exploration 6.1 - File System Implementation.md",
+    "notes/week-6/week-6.2.md",
+    "notes/week-6/week-6.1.md",
     "in_class/challenge-6.1/main",
     "in_class/challenge-6.1/adder.o",
     "in_class/challenge-6.1/main.o",
     "in_class/challenge-6.1/adder.h.gch",
     "in_class/challenge-6.1/adder.h",
     "in_class/challenge-6.1/example.h",
-    "in_class/challenge-6.1/adder.c",
-    "in_class/challenge-6.1/addr.c",
-    "in_class/challenge-6.1/main.c",
-    "in_class/challenge-6.1/multi.c",
-    "in_class/challenge-6.1/Makefile",
     "notes/explorations/Exploration 5.2 - Multi-Level Page Tables.md",
-    "notes/week-6/week-6.1.md",
     "notes/week-5/week 5-2.md",
     "notes/explorations/Exploration 5.1 - Translation Lookaside Buffers.md",
     "notes/week-5.md",
