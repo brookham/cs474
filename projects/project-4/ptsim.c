@@ -95,18 +95,26 @@ void new_process(int proc_num, int page_count)
 void kill_process(int proc_num){
     int page_table = get_page_table(proc_num);
 
-    for (int page = 0; page < PAGE_SIZE; page++){
-        mem[get_page_table(page_table)] = 0;
+    for (int page = 0; page < PAGE_COUNT; page++){
+        int physical_page = get_address(page_table, page);
+
+        int page_val = mem[physical_page];
+
+        if (page_val != 0){
+            mem[page_val] = 0;
+        }
         
     }
     mem[page_table] = 0;
+    mem[proc_num + PTP_OFFSET] = 0;
 }
 
 void store_value(int proc_num, int vaddr, int value){
-    
-    int virtual_page = vaddr >> 8;
     int offset = vaddr & 255;
-    int physical_page = mem[virtual_page + offset];
+    int virtual_page = vaddr >> PAGE_SHIFT;
+    
+    int ptp = get_page_table(proc_num);
+    int physical_page = mem[get_address(ptp, virtual_page)];
 
     int addr = (physical_page << 8) | offset;
 
@@ -116,9 +124,11 @@ void store_value(int proc_num, int vaddr, int value){
 }
 
 void load_value(int proc_num, int vaddr){
-    int virtual_page = vaddr >> 8;
     int offset = vaddr & 255;
-    int physical_page = mem[virtual_page + offset];
+    int virtual_page = vaddr >> PAGE_SHIFT;
+    
+    int ptp = get_page_table(proc_num);
+    int physical_page = mem[get_address(ptp, virtual_page)];
 
     int addr = (physical_page << 8) | offset;
 
