@@ -43,7 +43,7 @@ void set_bit(int index, int value)
 
     int val = bitmap[byte];
 
-    unsigned char offset = index%8;
+    unsigned char offset = index % 8;
 
     if (value > 0){
         bitmap[byte] = val | 1 << offset;

@@ -1,30 +1,35 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 TARGET = testfs
+LIB = libvvsfs.a
 OBJS = testfs.o image.o block.o
+LIB_OBJS = image.o block.o
 
-all: $(TARGET)
+all: $(LIB) $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+$(TARGET): testfs.o $(LIB)
+	$(CC) $(CFLAGS) -o $(TARGET) testfs.o $(LIB)
 
-main.o: main.c adder.h block.h
-	$(CC) $(CFLAGS) -c main.c
+$(LIB): $(LIB_OBJS)
+	ar rcs $(LIB) $(LIB_OBJS)
 
-adder.o: adder.c adder.h
-	$(CC) $(CFLAGS) -c adder.c
+testfs.o: testfs.c image.h block.h
+	$(CC) $(CFLAGS) -c testfs.c
+
+image.o: image.c image.h
+	$(CC) $(CFLAGS) -c image.c
 
 block.o: block.c block.h
 	$(CC) $(CFLAGS) -c block.c
 
-libvvsfs.a: main.o adder.o block.o 
-	ar rcs $@ $^
+test: $(TARGET)
+	./$(TARGET)
 
 clean:
 	rm -f *.o
 
 pristine: clean
-	rm -f $(TARGET)
+	rm -f $(TARGET) *.a
 
-.PHONY: all clean pristine
+.PHONY: all clean pristine test
