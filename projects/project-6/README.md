@@ -18,6 +18,11 @@ Command Line:
 - `image_open()`: create/open image and return `image_fd`
     - `open()`: opens file and returns file descriptor
     
+- `image_close()`: closes `image_fd`
 - `bread()`: reads block data to buffer and returns buffer pointer
+    - `lseek()`: repositions file offset for `image_fd`
+    - `read()`: reads data from `image_fd` into buffer
 
-- ``
+- `bwrite()`: writes to a specfic location in block
+    - `lseek()`: repositions file offset for `image_fd`
+    - `write()`: writes data from buffer to file descriptor
