@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/week-7/week-7.2.md",
+                "file": "notes/week-8/week-8.1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "week-7.2"
+              "title": "week-8.1"
             }
           }
         ],
@@ -214,19 +214,20 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "in_class/challenge-8.1/animal",
+    "in_class/challenge-8.1/pack.c",
+    "in_class/challenge-8.1/pack.h",
+    "in_class/challenge-8.1/animal.c",
+    "in_class/challenge-8.1/Makefile",
+    "in_class/challenge-8.1",
+    "notes/week-7/week-7.2.md",
+    "notes/week-8/week-8.1.md",
+    "notes/week-8",
     "in_class/challenge-7.4/recovery",
     "in_class/challenge-7.4/Makefile",
     "in_class/challenge-7.4/recovery.c",
     "in_class/challenge-7.4",
-    "in_class/challenge-7.3/parity",
-    "in_class/challenge-7.3/Makefile",
-    "in_class/challenge-7.3/parity.c",
-    "in_class/challenge-7.3",
     "notes/week-7/week-7.1.md",
-    "notes/week-7/week-7.2.md",
-    "in_class/challenge-7.2/first_zero",
-    "in_class/challenge-7.2/first_zero.c",
-    "in_class/challenge-7.2/Makefile",
     "notes/explorations/Exploration 8 - fsck and Journaling.md",
     "notes/explorations/Exploration 7 - RAID.md",
     "notes/explorations/Exploration 6.2 - IO devices.md",
@@ -248,7 +249,6 @@
     "notes/explorations/Exploration 2.2 - Non-blocking Algorithms.md",
     "notes/week-2/week 2-1.md",
     "notes/explorations/Exploration 1.1 - Scheduling.md",
-    "notes/explorations/Exploration 2.1 - Locking.md",
-    "explorations/Exploration 1.1 - Scheduling.md"
+    "notes/explorations/Exploration 2.1 - Locking.md"
   ]
 }
