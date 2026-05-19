@@ -24,37 +24,45 @@ int parity(unsigned char b)
  */
 int repair(unsigned char *data) {
 
-    int count;
+    int count = 0;
 
     int bad;
 
     for (int i = 0; i < 3; i++){
-        int par = parity(data[i]);
+        int par = (data[i] >> 7) & 1;
 
-        data[i] & 0b01111111;
+        unsigned char stripped = data[i] & 0b01111111;
 
-        int corrupted = parity(data[i]);
+        int computed = parity(stripped);
 
-        if (corrupted != par){
+        if (computed != par){
             count++;
             bad = i;
         }
+    }
 
+    if (count > 1){
+        return 0;
     }
 
     unsigned char a = data[0];
     unsigned char b = data[1];
     unsigned char c = data[2];
 
-    if (count == 0){
-        return 1;
+    if (bad == 0){
+        a = b ^ c;
+        data[0] = a;
     }
-    if (count > 1){
-        return 0;
+    if (bad == 1){
+        b = a ^ c;
+        data[1] = b;
+    }
+    if (bad == 2){
+        c = a ^ b;
+        data[2] = c;
     }
 
-
-
+    return 1;
 }
 
 int main(void)
