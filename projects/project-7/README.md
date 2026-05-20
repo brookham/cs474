@@ -26,3 +26,27 @@ Command Line:
 - `bwrite()`: writes to a specfic location in block
     - `lseek()`: repositions file offset for `image_fd`
     - `write()`: writes data from buffer to file descriptor
+
+- `find_low_clear_bit()`: finds lowest free bit within byte
+
+- `set_free()`: sets free bit in block to desired value
+
+- `find_free()`: finds lowest free bit in block
+    - `find_low_clear_bit()`  
+
+- `ialloc()`: allocates a previously-free inode in the inode map
+    - `bread()`
+    - `find_free()`
+    - `set_free()`
+    - `bwrite()`
+
+- `alloc()`: allocates a previously-free inode in the free block map
+    - `bread()`
+    - `find_free()`
+    - `set_free()`
+    - `bwrite()`
+
+- `mkfs()`: initializes file system
+    - `memset()`: sets value of specified bits
+    - `bwrite()`
+    - `alloc()`

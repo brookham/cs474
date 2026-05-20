@@ -31,8 +31,8 @@ void set_free(unsigned char *block, int num, int set){
 int find_free(unsigned char *block){
 
     for (int i = 0; i < 4096; i++){
-        int block_num = block[i];
-        int bit = find_low_clear_bit(block_num);
+        int byte = block[i];
+        int bit = find_low_clear_bit(byte);
 
         if (bit != -1){
             return i * 8 + bit;
