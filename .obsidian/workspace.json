@@ -214,6 +214,8 @@
   },
   "active": "9b662c4a066219ca",
   "lastOpenFiles": [
+    "in_class/challenge-9.1/rdir",
+    "in_class/challenge-9.1/rdir.c",
     "in_class/challenge-8.2/corruption",
     "in_class/challenge-8.2/corruption.exe",
     "in_class/challenge-9.1/Makefile",
@@ -226,8 +228,6 @@
     "notes/explorations/Exploration 9 - SSDs.md",
     "notes/week 9.md",
     "notes/week-8/week-8.2.md",
-    "in_class/challenge-8.2/corruption.c",
-    "in_class/challenge-8.2/Makefile",
     "notes/explorations/Exploration 8 - fsck and Journaling.md",
     "notes/week-8/week-8.1.md",
     "notes/week-7/week-7.2.md",
