@@ -11,6 +11,10 @@ Command Line:
 - `block.h`: header file that stores block functions 
 - `image.c`: code to create/open and close image files
 - `image.h`: header file for storing image functions
+- `inode.c`: code for inode allocation, lookup, and read/write helpers
+- `inode.h`: header file for inode structures and function declarations
+- `pack.c`: code to read and write packed integer values in big-endian order
+- `pack.h`: header file for packed read/write helper declarations
 - `testfs.c`: test suite for block and image functions
 - `ctest.h`: header file for test suite
 
@@ -34,11 +38,46 @@ Command Line:
 - `find_free()`: finds lowest free bit in block
     - `find_low_clear_bit()`  
 
+- `read_u32()`: reads a 32-bit value from a packed byte buffer
+- `read_u16()`: reads a 16-bit value from a packed byte buffer
+- `read_u8()`: reads an 8-bit value from a packed byte buffer
+
+- `write_u32()`: writes a 32-bit value to a packed byte buffer
+- `write_u16()`: writes a 16-bit value to a packed byte buffer
+- `write_u8()`: writes an 8-bit value to a packed byte buffer
+
 - `ialloc()`: allocates a previously-free inode in the inode map
     - `bread()`
     - `find_free()`
     - `set_free()`
     - `bwrite()`
+
+- `incore_find_free()`: finds a free in-core inode slot
+
+- `incore_find()`: finds an in-core inode by inode number
+
+- `incore_free_all()`: clears the in-core inode table
+
+- `read_inode()`: reads an inode from disk into memory
+    - `bread()`
+    - `read_u32()`
+    - `read_u16()`
+    - `read_u8()`
+
+- `write_inode()`: writes an inode from memory to disk
+    - `bread()`
+    - `write_u32()`
+    - `write_u16()`
+    - `write_u8()`
+    - `bwrite()`
+
+- `iget()`: gets an in-core inode for a given inode number
+    - `incore_find()`
+    - `incore_find_free()`
+    - `read_inode()`
+
+- `iput()`: releases an in-core inode
+    - `write_inode()`
 
 - `alloc()`: allocates a previously-free inode in the free block map
     - `bread()`

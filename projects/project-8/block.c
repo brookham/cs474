@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 #include "image.h"
 #include "block.h"
 #include "free.h"
@@ -12,6 +13,7 @@ unsigned char *bread(int block_num, unsigned char *block){
 
     int offset = BLOCK_SIZE * block_num;
 
+    memset(block, 0, BLOCK_SIZE);
     lseek(image_fd, offset, SEEK_SET);
 
     read(image_fd, block, BLOCK_SIZE);

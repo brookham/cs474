@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 TARGET = testfs
 LIB = libvvsfs.a
 OBJS = testfs.o image.o block.o free.o inode.o
-LIB_OBJS = image.o block.o free.o inode.o
+LIB_OBJS = image.o block.o free.o pack.o inode.o
 
 all: $(LIB) $(TARGET)
 
@@ -26,8 +26,11 @@ block.o: block.c block.h
 free.o: free.c free.h
 	$(CC) $(CFLAGS) -c free.c
 
-inode.o: inode.c inode.h
+inode.o: inode.c inode.h pack.h
 	$(CC) $(CFLAGS) -c inode.c
+
+pack.o: pack.c pack.h
+	$(CC) $(CFLAGS) -c pack.c
 
 test: $(TARGET)
 	./$(TARGET)
