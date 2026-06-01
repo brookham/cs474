@@ -5,6 +5,7 @@
 #include "free.h"
 #include "inode.h"
 #include "pack.h"
+#include "dir.h"
 #include <string.h>
 
 
@@ -114,10 +115,18 @@ void test_iget_iput(void){
     CTEST_ASSERT(iget_in->ref_count == 0, "iput decrements ref_count");
 }
 
+void test_open_directory(void){
+    struct directory *dir = directory_open(0);
+    CTEST_ASSERT(dir != NULL, "directory_open returns a directory");
+    CTEST_ASSERT(dir->inode != NULL, "directory has an inode");
+    CTEST_ASSERT(dir->offset == 0, "directory offset starts at 0");
+}
+
 int main(void) {
     image_open("test.img", 1);
     test_bread_bwrite();
     test_set_and_find_free();
+    test_open_directory();
     image_close();
     image_open("test.img", 1);
     test_alloc();
