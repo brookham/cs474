@@ -8,6 +8,8 @@
 #include "dir.h"
 #include <string.h>
 
+void mkfs(void);
+
 
 void test_bread_bwrite(void) {
     unsigned char w_buf[4096];
@@ -122,11 +124,28 @@ void test_open_directory(void){
     CTEST_ASSERT(dir->offset == 0, "directory offset starts at 0");
 }
 
+void test_directory_get(void){
+    struct directory *dir = directory_open(0);
+    struct directory_entry ent;
+
+    int entry = directory_get(dir, &ent);
+    CTEST_ASSERT(entry != -1, "still within directory");
+    CTEST_ASSERT(ent.inode_num == dir->inode->inode_num, "entry inode equals directory inode");
+    CTEST_ASSERT(ent.name[0] != '\0', "entry has a name");
+}
+void test_close_dir(void){
+    struct directory *dir = directory_open(0);
+    directory_close(dir);
+}
+
 int main(void) {
     image_open("test.img", 1);
+    mkfs();
     test_bread_bwrite();
     test_set_and_find_free();
     test_open_directory();
+    test_directory_get();
+    test_close_dir();
     image_close();
     image_open("test.img", 1);
     test_alloc();

@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 TARGET = testfs
 LIB = libvvsfs.a
 OBJS = testfs.o image.o block.o free.o inode.o dir.o ls.o
-LIB_OBJS = image.o block.o free.o pack.o inode.o dir.o ls.o
+LIB_OBJS = image.o block.o free.o pack.o inode.o dir.o ls.o mkfs.o
 
 all: $(LIB) $(TARGET)
 
@@ -35,9 +35,9 @@ pack.o: pack.c pack.h
 dir.o: dir.c dir.h
 	$(CC) $(CFLAGS) -c dir.c
 
-ls.o: ls.c
-	$(CC) $(CFLAGS) -c ls.c
 
+mkfs.o: mkfs.c
+	$(CC) $(CFLAGS) -c mkfs.c
 
 test: $(TARGET)
 	./$(TARGET)
@@ -46,6 +46,6 @@ clean:
 	rm -f *.o
 
 pristine: clean
-	rm -f $(TARGET) *.a
+	rm -f $(TARGET) test.img *.a
 
 .PHONY: all clean pristine test

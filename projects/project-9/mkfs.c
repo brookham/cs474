@@ -43,10 +43,10 @@ void mkfs(void)
     unsigned char *arr = bread(root_block_num, root_block);
 
     write_u16(arr + 0, root_in->inode_num);
-    strcpy((char *)(arr + INODE_NUM_LEN), "..");
+    strcpy((char *)(arr + INODE_NUM_LEN), ".");
 
     write_u16(arr + ENTRY_SIZE, root_in->inode_num);
-    strcpy((char *)(arr + ENTRY_SIZE + INODE_NUM_LEN), ".");
+    strcpy((char *)(arr + ENTRY_SIZE + INODE_NUM_LEN), "..");
 
     bwrite(root_block_num, root_block);
 
