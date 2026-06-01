@@ -11,6 +11,9 @@ Command Line:
 - `block.h`: header file that stores block functions 
 - `image.c`: code to create/open and close image files
 - `image.h`: header file for storing image functions
+- `dir.c`: code for opening, reading, and closing directories
+- `dir.h`: header file for directory structures and function declarations
+- `ls.c`: code for listing directory contents
 - `inode.c`: code for inode allocation, lookup, and read/write helpers
 - `inode.h`: header file for inode structures and function declarations
 - `pack.c`: code to read and write packed integer values in big-endian order
@@ -89,3 +92,22 @@ Command Line:
     - `memset()`: sets value of specified bits
     - `bwrite()`
     - `alloc()`
+
+- `directory_open()`: opens a directory for reading
+    - `iget()`
+    - `malloc()`
+
+- `directory_get()`: reads the next directory entry
+    - `bread()`
+    - `read_u16()`
+    - `strcpy()`
+
+- `directory_close()`: closes a directory
+    - `iput()`
+    - `free()`
+
+- `ls()`: lists the contents of the root directory
+    - `directory_open()`
+    - `directory_get()`
+    - `printf()`
+    - `directory_close()`

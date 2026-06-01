@@ -2,12 +2,14 @@
 #define DIR_H
 #include "inode.h"
 
-struct directory {
+struct directory
+{
     struct inode *inode;
     unsigned int offset;
 };
 
-struct directory_entry {
+struct directory_entry
+{
     unsigned int inode_num;
     char name[16];
 };

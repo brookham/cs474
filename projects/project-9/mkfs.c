@@ -9,6 +9,8 @@
 #define INODE_NUM_LEN 2
 #define FILE_NAME_LEN 16
 #define RESERVED_LEN 14
+#define FILE_IS_DIR_FLAG 2
+#define FREE_BLOCK 2
 
 void mkfs(void)
 {
@@ -17,7 +19,7 @@ void mkfs(void)
 
     for (int i = 0; i < 7; i++)
     {
-        if (i == 2)
+        if (i == FREE_BLOCK)
         {
             continue;
         }
@@ -30,11 +32,11 @@ void mkfs(void)
         alloc();
     }
 
-    //Creating root directory
+    // Creating root directory
     struct inode *root_in = ialloc();
     int root_block_num = alloc();
 
-    root_in->flags = 2;
+    root_in->flags = FILE_IS_DIR_FLAG;
     root_in->size = ENTRY_SIZE * 2;
     root_in->block_ptr[0] = root_block_num;
 

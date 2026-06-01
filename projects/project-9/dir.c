@@ -10,10 +10,12 @@
 #define INODE_NUM_SIZE 2
 #define ENTRY_SIZE 32
 
-struct directory *directory_open(int inode_num){
+struct directory *directory_open(int inode_num)
+{
     struct inode *in = iget(inode_num);
 
-    if (in == NULL){
+    if (in == NULL)
+    {
         return NULL;
     }
 
@@ -23,14 +25,15 @@ struct directory *directory_open(int inode_num){
     dir->offset = 0;
 
     return dir;
-    
 }
 
-int directory_get(struct directory *dir, struct directory_entry *ent){
+int directory_get(struct directory *dir, struct directory_entry *ent)
+{
 
     int offset = dir->offset;
 
-    if (offset >= (int)dir->inode->size){
+    if (offset >= (int)dir->inode->size)
+    {
         return -1;
     }
 
@@ -51,7 +54,8 @@ int directory_get(struct directory *dir, struct directory_entry *ent){
     return 0;
 }
 
-void directory_close(struct directory *d){
+void directory_close(struct directory *d)
+{
     struct inode *in = d->inode;
     iput(in);
 

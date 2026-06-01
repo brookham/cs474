@@ -10,8 +10,8 @@
 
 void mkfs(void);
 
-
-void test_bread_bwrite(void) {
+void test_bread_bwrite(void)
+{
     unsigned char w_buf[4096];
     unsigned char r_buf[4096];
 
@@ -27,7 +27,8 @@ void test_bread_bwrite(void) {
     CTEST_ASSERT(memcmp(r_buf, w_buf, sizeof(w_buf)) == 0, "read buffer equals written buffer");
 }
 
-void test_set_and_find_free(void){
+void test_set_and_find_free(void)
+{
     unsigned char block[4096];
     // start with all bits clear (0 == free)
     memset(block, 0, sizeof(block));
@@ -47,7 +48,8 @@ void test_set_and_find_free(void){
     CTEST_ASSERT(free_bit == 1, "cleared bit becomes free again");
 }
 
-void test_alloc(void){
+void test_alloc(void)
+{
     struct inode *in = ialloc();
     CTEST_ASSERT(in != NULL, "ialloc returns an inode");
     CTEST_ASSERT(in->inode_num == 0, "ialloc returns inode number 0");
@@ -55,10 +57,10 @@ void test_alloc(void){
     struct inode *in2 = ialloc();
     CTEST_ASSERT(in2 != NULL, "ialloc returns a second inode");
     CTEST_ASSERT(in2->inode_num == 1, "ialloc returns inode number 1");
-
 }
 
-void test_incore_find_and_free_all(void){
+void test_incore_find_and_free_all(void)
+{
     struct inode *free_inode = incore_find_free();
     CTEST_ASSERT(free_inode != NULL, "found free incore inode");
     free_inode->ref_count = 1;
@@ -72,14 +74,16 @@ void test_incore_find_and_free_all(void){
     CTEST_ASSERT(found_inode == NULL, "no incore inodes found after free_all");
 }
 
-void test_read_write_inode(void){
+void test_read_write_inode(void)
+{
     struct inode in = {0};
     in.size = 1234;
     in.owner_id = 5678;
     in.permissions = 0xAB;
     in.flags = 0xCD;
     in.link_count = 3;
-    for (int i = 0; i < INODE_PTR_COUNT; i++){
+    for (int i = 0; i < INODE_PTR_COUNT; i++)
+    {
         in.block_ptr[i] = i + 1;
     }
 
@@ -96,12 +100,14 @@ void test_read_write_inode(void){
     CTEST_ASSERT(in2.permissions == in.permissions, "inode permissions match");
     CTEST_ASSERT(in2.flags == in.flags, "inode flags match");
     CTEST_ASSERT(in2.link_count == in.link_count, "inode link_count matches");
-    for (int i = 0; i < INODE_PTR_COUNT; i++){
+    for (int i = 0; i < INODE_PTR_COUNT; i++)
+    {
         CTEST_ASSERT(in2.block_ptr[i] == in.block_ptr[i], "inode block_ptr matches");
     }
 }
 
-void test_iget_iput(void){
+void test_iget_iput(void)
+{
     struct inode in = {0};
     in.inode_num = 42;
     in.ref_count = 0;
@@ -117,14 +123,16 @@ void test_iget_iput(void){
     CTEST_ASSERT(iget_in->ref_count == 0, "iput decrements ref_count");
 }
 
-void test_open_directory(void){
+void test_open_directory(void)
+{
     struct directory *dir = directory_open(0);
     CTEST_ASSERT(dir != NULL, "directory_open returns a directory");
     CTEST_ASSERT(dir->inode != NULL, "directory has an inode");
     CTEST_ASSERT(dir->offset == 0, "directory offset starts at 0");
 }
 
-void test_directory_get(void){
+void test_directory_get(void)
+{
     struct directory *dir = directory_open(0);
     struct directory_entry ent;
 
@@ -133,12 +141,14 @@ void test_directory_get(void){
     CTEST_ASSERT(ent.inode_num == dir->inode->inode_num, "entry inode equals directory inode");
     CTEST_ASSERT(ent.name[0] != '\0', "entry has a name");
 }
-void test_close_dir(void){
+void test_close_dir(void)
+{
     struct directory *dir = directory_open(0);
     directory_close(dir);
 }
 
-int main(void) {
+int main(void)
+{
     image_open("test.img", 1);
     mkfs();
     test_bread_bwrite();
