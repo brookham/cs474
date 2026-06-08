@@ -147,6 +147,57 @@ void test_close_dir(void)
     directory_close(dir);
 }
 
+void test_namei_root(void)
+{
+    struct inode *in = namei("/");
+    CTEST_ASSERT(in != NULL, "namei('/') returns non-NULL");
+    CTEST_ASSERT(in->inode_num == 0, "namei('/') returns root inode number 0");
+    CTEST_ASSERT(in->ref_count > 0, "namei('/') inode has positive ref_count");
+    iput(in);
+}
+
+void test_directory_make(void)
+{
+    int result = directory_make("/foo");
+    CTEST_ASSERT(result == 0, "directory_make('/foo') returns 0");
+
+    // Verify the entry appears in root
+    struct directory *dir = directory_open(0);
+    struct directory_entry ent;
+    int found = 0;
+    while (directory_get(dir, &ent) != -1)
+    {
+        if (strcmp(ent.name, "foo") == 0)
+        {
+            found = 1;
+            break;
+        }
+    }
+    directory_close(dir);
+    CTEST_ASSERT(found, "foo entry appears in root directory after directory_make");
+}
+
+void test_namei_component(void)
+{
+    struct inode *in = namei("/foo");
+    CTEST_ASSERT(in != NULL, "namei('/foo') returns non-NULL");
+    CTEST_ASSERT(in->flags == 2, "namei('/foo') inode has directory flag set");
+
+    // Verify . and .. entries exist inside foo
+    struct directory *dir = directory_open(in->inode_num);
+    struct directory_entry ent;
+    int found_dot = 0, found_dotdot = 0;
+    while (directory_get(dir, &ent) != -1)
+    {
+        if (strcmp(ent.name, ".") == 0)  found_dot = 1;
+        if (strcmp(ent.name, "..") == 0) found_dotdot = 1;
+    }
+    directory_close(dir);
+    CTEST_ASSERT(found_dot, "foo contains '.' entry");
+    CTEST_ASSERT(found_dotdot, "foo contains '..' entry");
+    iput(in);
+}
+
 int main(void)
 {
     image_open("test.img", 1);
@@ -156,6 +207,9 @@ int main(void)
     test_open_directory();
     test_directory_get();
     test_close_dir();
+    test_namei_root();
+    test_directory_make();
+    test_namei_component();
     image_close();
     image_open("test.img", 1);
     test_alloc();
